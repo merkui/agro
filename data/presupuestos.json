@@ -1,0 +1,136 @@
+[
+  {
+    "name": "MArcos",
+    "email": "merkui@yahoo.com.ar",
+    "company": "MHWEB",
+    "observation": "Mi observacion , envien presu. Plis",
+    "items": [
+      {
+        "producto": {
+          "id": "3dab1f4c-2db7-4d3e-aa5b-9c5d8f7b4604",
+          "producto_nombre": "Herbicida SuperClear",
+          "producto_descripcion": "Actúa rápidamente sobre malezas difíciles en cultivos de cereales.",
+          "producto_formulacion": "Granulado dispersable 25%",
+          "producto_plaga": "Hierbas anuales, Treboles, Dicotiledóneas",
+          "estado": "oferta",
+          "categoria": "herbicidas",
+          "created_at": "2026-04-09T13:50:00.000Z",
+          "image_urls": []
+        },
+        "quantity": 50,
+        "unitPrice": 5
+      }
+    ],
+    "id": "9dc6d1d6-71d2-4ab6-8532-0e3f67a04195",
+    "submittedAt": "2026-04-30T22:43:14.797Z"
+  },
+  {
+    "name": "Dos",
+    "email": "m@m.com",
+    "company": "Dos",
+    "observation": "Dos",
+    "items": [
+      {
+        "producto": {
+          "id": "e8d1f0bf-613a-4409-8a9b-12c6cc3f39ee",
+          "producto_nombre": "Insecticida AgroShield",
+          "producto_descripcion": "Protege cultivos frutales y vegetales contra plagas de chupadores.",
+          "producto_formulacion": "Suspensión concentrada 20%",
+          "producto_plaga": "Acaros, Chicharritas, Minadores",
+          "estado": "destacado",
+          "categoria": "insecticidas",
+          "created_at": "2026-04-03T10:15:00.000Z",
+          "image_urls": []
+        },
+        "quantity": 10,
+        "unitPrice": 10
+      },
+      {
+        "producto": {
+          "id": "9de1c4ab-8b8f-463a-b6d4-6c2d5b3a7f68",
+          "producto_nombre": "Fungicida ShieldPlus",
+          "producto_descripcion": "Control preventivo y curativo para hongos en frutales y hortalizas.",
+          "producto_formulacion": "Líquido soluble 30%",
+          "producto_plaga": "Mildiu, Roya, Mancha angular",
+          "estado": "destacado",
+          "categoria": "fungicidas",
+          "created_at": "2026-04-02T12:40:00.000Z",
+          "image_urls": []
+        },
+        "quantity": 20,
+        "unitPrice": 5
+      }
+    ],
+    "id": "12d52cb3-80c3-4a17-89ce-dfd18cee0029",
+    "submittedAt": "2026-04-30T23:20:10.060Z"
+  },
+  {
+    "name": "Marcos",
+    "email": "marcos@mhweb.com.ar",
+    "company": "MH",
+    "observation": "Cotizar por favor.",
+    "items": [
+      {
+        "producto": {
+          "id": "b9c4d7e1-6f8a-41c3-8a2e-9f1b2c3d4a5b",
+          "producto_nombre": "Herbicida RapidKill",
+          "producto_descripcion": "Fórmula rápida para controlar malezas resistentes en predios agrícolas.",
+          "producto_formulacion": "Concentrado soluble 22%",
+          "producto_plaga": "Hierbas resistentes, Malezas de hoja ancha",
+          "estado": "nuevo",
+          "categoria": "herbicidas",
+          "created_at": "2026-04-13T15:25:00.000Z",
+          "image_urls": [
+            "/herbicida.jpg"
+          ]
+        },
+        "quantity": 60,
+        "unitPrice": 500
+      },
+      {
+        "producto": {
+          "id": "2b7e5c4d-1f3a-4e6f-9c8d-7a5b3c1d2e4f",
+          "producto_nombre": "Fungicida CropSafe",
+          "producto_descripcion": "Estrategia de protección integral contra hongos y bacterias.",
+          "producto_formulacion": "Concentrado emulsionable 28%",
+          "producto_plaga": "Antracnosis, Mancha foliar, Podredumbre",
+          "estado": "destacado",
+          "categoria": "fungicidas",
+          "created_at": "2026-04-10T08:55:00.000Z",
+          "image_urls": [
+            "/cropsafe.jpg"
+          ]
+        },
+        "quantity": 50,
+        "unitPrice": 750
+      }
+    ],
+    "id": "c232e81b-82f6-49b7-8520-5f1aa8e58a43",
+    "submittedAt": "2026-05-04T16:07:42.226Z"
+  },
+  {
+    "name": "Marcos2",
+    "email": "marcos@mhweb.com.ar",
+    "company": "MH2",
+    "observation": "Presupuestar a la brevedad 2",
+    "items": [
+      {
+        "producto": {
+          "id": "a2f4c5e7-1d2a-4a67-801c-4d5a9b7fbc22",
+          "producto_nombre": "Insecticida NovaGuard",
+          "producto_descripcion": "Fórmula biodegradable para aplicaciones foliares en cultivos orgánicos.",
+          "producto_formulacion": "Cebo líquido 12%",
+          "producto_plaga": "Gusanos, Saltamontes, Mosca del fruto",
+          "estado": "nuevo",
+          "categoria": "insecticidas",
+          "created_at": "2026-04-06T14:20:00.000Z",
+          "image_urls": []
+        },
+        "quantity": 200,
+        "unitPrice": 100
+      }
+    ],
+    "id": "ed3dec19-7b59-44ab-a86b-d1123862cf0c",
+    "submittedAt": "2026-05-04T17:02:38.842Z"
+  }
+]
