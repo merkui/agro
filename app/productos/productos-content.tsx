@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { CATEGORIAS, type Producto } from '@/lib/types'
 import { ArrowRight, Beaker, Filter } from 'lucide-react'
 import { getProductUrl } from '@/lib/product-data'
+import { AddToBudget } from '@/components/add-to-budget'
 
 interface ProductosContentProps {
   productos: Producto[]
@@ -153,6 +154,7 @@ export function ProductosContent({ productos, selectedCategoria, selectedEstado 
                           <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
                         </Link>
                       </Button>
+                      <AddToBudget producto={producto} />
                     </div>
                   </CardContent>
                 </Card>
