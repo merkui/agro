@@ -116,8 +116,8 @@ export default function PresupuestoPage() {
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="rounded-3xl border border-border bg-card p-6">
-            <div className="grid gap-6 md:grid-cols-[2fr_1fr_1fr_1fr] md:items-center">
+          <div className="rounded-3xl border border-border bg-card p-4 sm:p-6">
+            <div className="hidden gap-6 lg:grid lg:grid-cols-[2fr_1fr_1fr_1fr] lg:items-center">
               <span className="text-sm font-medium text-muted-foreground">Producto</span>
               <span className="text-sm font-medium text-muted-foreground">Cantidad</span>
               <span className="text-sm font-medium text-muted-foreground">Categoria</span>
@@ -125,8 +125,11 @@ export default function PresupuestoPage() {
             </div>
             <div className="mt-4 space-y-4">
               {items.map((item) => (
-                <div key={item.producto.id} className="grid gap-4 rounded-2xl border border-border bg-background/80 p-4 md:grid-cols-[2fr_1fr_1fr_1fr] md:items-center">
-                  <div>
+                <div key={item.producto.id} className="grid gap-4 rounded-2xl border border-border bg-background/80 p-4 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:items-center">
+                  <div className="space-y-1 lg:space-y-0">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground lg:hidden">
+                      Producto
+                    </span>
                     <Link href={getProductUrl(item.producto)} className="font-semibold text-foreground hover:text-primary">
                       {item.producto.producto_nombre}
                     </Link>
@@ -134,7 +137,10 @@ export default function PresupuestoPage() {
                       {item.producto.producto_descripcion}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-between gap-3 lg:block">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground lg:hidden">
+                      Cantidad
+                    </span>
                     <Input
                       type="number"
                       min={1}
@@ -143,10 +149,16 @@ export default function PresupuestoPage() {
                       className="w-24"
                     />
                   </div>
-                  <div className="text-sm font-medium text-foreground capitalize">
-                    {item.producto.categoria}
+                  <div className="flex items-center justify-between gap-3 text-sm font-medium text-foreground capitalize lg:block">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground lg:hidden">
+                      Categoria
+                    </span>
+                    <span>{item.producto.categoria}</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-between gap-3 lg:block">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground lg:hidden">
+                      Accion
+                    </span>
                     <Button variant="destructive" size="sm" onClick={() => removeItem(item.producto.id)}>
                       <Trash2 className="size-4" />
                       Eliminar
