@@ -189,3 +189,24 @@ export function getFeaturedProducts(limit = 6) {
 export function getProductById(id: string) {
   return PRODUCTOS.find((producto) => producto.id === id)
 }
+
+export function slugifyProductName(name: string) {
+  return name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+export function getProductUrl(producto: Producto) {
+  return `/producto/${producto.categoria}/${slugifyProductName(producto.producto_nombre)}`
+}
+
+export function getProductBySlug(categoria: string, slug: string) {
+  return PRODUCTOS.find(
+    (producto) =>
+      producto.categoria === categoria &&
+      slugifyProductName(producto.producto_nombre) === slug,
+  )
+}

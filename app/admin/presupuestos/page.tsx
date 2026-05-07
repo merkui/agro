@@ -286,6 +286,7 @@ export default function AdminPresupuestosPage() {
                       </Button>
                       <Button
                         variant="outline"
+                        className="cursor-pointer"
                         onClick={() => handleSendBudget(budget)}
                         disabled={sendingId === budget.id}
                       >

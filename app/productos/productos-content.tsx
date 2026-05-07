@@ -6,7 +6,8 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { CATEGORIAS, type Producto } from '@/lib/types'
-import { Beaker, Filter } from 'lucide-react'
+import { ArrowRight, Beaker, Filter } from 'lucide-react'
+import { getProductUrl } from '@/lib/product-data'
 
 interface ProductosContentProps {
   productos: Producto[]
@@ -104,10 +105,11 @@ export function ProductosContent({ productos, selectedCategoria, selectedEstado 
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {productos.map((producto) => {
               const firstImage = producto.image_urls?.[0]
+              const productUrl = getProductUrl(producto)
 
               return (
-                <Card key={producto.id} className="group overflow-hidden transition-all hover:shadow-md">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                <Card key={producto.id} className="group gap-0 overflow-hidden py-0 transition-all hover:shadow-md">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-t-xl bg-secondary">
                     {firstImage ? (
                       <Image
                         src={firstImage}
@@ -122,10 +124,10 @@ export function ProductosContent({ productos, selectedCategoria, selectedEstado 
                       </div>
                     )}
                   </div>
-                  <CardHeader>
+                  <CardHeader className="pt-6">
                     <CardTitle className="text-lg">
                       <Link 
-                        href={`/productos/${producto.id}`}
+                        href={productUrl}
                         className="transition-colors hover:text-primary"
                       >
                         {producto.producto_nombre}
@@ -135,14 +137,22 @@ export function ProductosContent({ productos, selectedCategoria, selectedEstado 
                       {producto.producto_descripcion || 'Sin descripcion disponible'}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
-                        {producto.categoria}
-                      </span>
-                      <span className="inline-flex items-center rounded-full bg-secondary px-2 py-1 text-xs font-medium text-muted-foreground">
-                        {producto.estado}
-                      </span>
+                  <CardContent className="flex flex-1 flex-col justify-between gap-4 pb-6">
+                    <div className="mt-auto space-y-4">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+                          {producto.categoria}
+                        </span>
+                        <span className="inline-flex items-center rounded-full bg-secondary px-2 py-1 text-xs font-medium text-muted-foreground">
+                          {producto.estado}
+                        </span>
+                      </div>
+                      <Button variant="ghost" size="sm" className="group/btn -ml-2 text-primary" asChild>
+                        <Link href={productUrl}>
+                          Ver producto
+                          <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
+                        </Link>
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>

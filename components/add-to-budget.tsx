@@ -29,7 +29,7 @@ export function AddToBudget({ producto }: AddToBudgetProps) {
       title: 'Producto agregado',
       description: `${producto.producto_nombre} x ${quantity} añadido al presupuesto.`,
       variant: 'success',
-      duration: 4000,
+      duration: 2000,
       action: (
         <ToastAction asChild altText="Ver presupuesto">
           <Link href="/presupuesto">Ver Presupuesto</Link>
@@ -49,7 +49,7 @@ export function AddToBudget({ producto }: AddToBudgetProps) {
           onChange={handleChange}
           className="w-24"
         />
-        <Button size="sm" onClick={handleAdd}>
+        <Button size="sm" className="cursor-pointer" onClick={handleAdd}>
           Agregar al Presupuesto
         </Button>
       </div>

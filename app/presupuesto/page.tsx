@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import { ArrowLeft, Trash2 } from 'lucide-react'
+import { getProductUrl } from '@/lib/product-data'
 
 export default function PresupuestoPage() {
   const { items, totalItems, updateQuantity, removeItem, clearBudget } = useBudget()
@@ -126,7 +127,7 @@ export default function PresupuestoPage() {
               {items.map((item) => (
                 <div key={item.producto.id} className="grid gap-4 rounded-2xl border border-border bg-background/80 p-4 md:grid-cols-[2fr_1fr_1fr_1fr] md:items-center">
                   <div>
-                    <Link href={`/productos/${item.producto.id}`} className="font-semibold text-foreground hover:text-primary">
+                    <Link href={getProductUrl(item.producto)} className="font-semibold text-foreground hover:text-primary">
                       {item.producto.producto_nombre}
                     </Link>
                     <p className="text-sm text-muted-foreground line-clamp-2">
@@ -162,7 +163,7 @@ export default function PresupuestoPage() {
               <p className="text-2xl font-semibold text-foreground">{totalItems}</p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button variant="outline" onClick={clearBudget}>Limpiar presupuesto</Button>
+              <Button variant="outline" className="cursor-pointer" onClick={clearBudget}>Limpiar presupuesto</Button>
               <Button asChild>
                 <Link href="/productos">Seguir comprando</Link>
               </Button>
@@ -212,7 +213,7 @@ export default function PresupuestoPage() {
             />
 
             <div className="flex flex-wrap items-center gap-3">
-              <Button type="submit" disabled={status === 'submitting'}>
+              <Button type="submit" className="cursor-pointer" disabled={status === 'submitting'}>
                 {status === 'submitting' ? 'Enviando...' : 'Enviar el Presupuesto'}
               </Button>
               <Button variant="outline" onClick={() => {
