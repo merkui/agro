@@ -120,7 +120,7 @@ export default function PresupuestoPage() {
             <div className="hidden gap-6 lg:grid lg:grid-cols-[2fr_1fr_1fr_1fr] lg:items-center">
               <span className="text-sm font-medium text-muted-foreground">Producto</span>
               <span className="text-sm font-medium text-muted-foreground">Cantidad</span>
-              <span className="text-sm font-medium text-muted-foreground">Categoria</span>
+              <span className="text-sm font-medium text-muted-foreground">Categoría</span>
               <span className="text-sm font-medium text-muted-foreground">Acción</span>
             </div>
             <div className="mt-4 space-y-4">
@@ -151,13 +151,13 @@ export default function PresupuestoPage() {
                   </div>
                   <div className="flex items-center justify-between gap-3 text-sm font-medium text-foreground capitalize lg:block">
                     <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground lg:hidden">
-                      Categoria
+                      Categoría
                     </span>
                     <span>{item.producto.categoria}</span>
                   </div>
                   <div className="flex items-center justify-between gap-3 lg:block">
                     <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground lg:hidden">
-                      Accion
+                      Acción
                     </span>
                     <Button variant="destructive" size="sm" onClick={() => removeItem(item.producto.id)}>
                       <Trash2 className="size-4" />

@@ -9,12 +9,12 @@ export default function QuienesSomosPage() {
         {/* Left Column - Text */}
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            Quienes Somos
+            Quiénes Somos
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Somos una empresa dedicada a ofrecer soluciones agricolas de alta calidad. 
-            Con mas de 20 anos de experiencia en el mercado, nos hemos consolidado como 
-            lideres en la distribucion de productos para la proteccion de cultivos.
+            Somos una empresa dedicada a ofrecer soluciones agrícolas de alta calidad. 
+            Con más de 20 años de experiencia en el mercado, nos hemos consolidado como 
+            líderes en la distribución de productos para la protección de cultivos.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Nuestro compromiso es brindar a los agricultores las mejores herramientas 
@@ -29,9 +29,9 @@ export default function QuienesSomosPage() {
                 <Target className="size-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground">Mision</h3>
+                <h3 className="font-semibold text-foreground">Misión</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Proveer soluciones agricolas innovadoras y sostenibles.
+                  Proveer soluciones agrícolas innovadoras y sostenibles.
                 </p>
               </div>
             </div>
@@ -41,9 +41,9 @@ export default function QuienesSomosPage() {
                 <Leaf className="size-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground">Vision</h3>
+                <h3 className="font-semibold text-foreground">Visión</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Ser referentes en el sector agroquimico a nivel regional.
+                  Ser referentes en el sector agroquímico a nivel regional.
                 </p>
               </div>
             </div>

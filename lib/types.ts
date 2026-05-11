@@ -21,11 +21,11 @@ export const CATEGORIAS: { value: Categoria; label: string; description: string 
   { 
     value: 'herbicidas', 
     label: 'Herbicidas', 
-    description: 'Eliminacion de malezas y hierbas no deseadas' 
+    description: 'Eliminación de malezas y hierbas no deseadas' 
   },
   { 
     value: 'fungicidas', 
     label: 'Fungicidas', 
-    description: 'Proteccion contra hongos y enfermedades' 
+    description: 'Protección contra hongos y enfermedades' 
   },
 ]

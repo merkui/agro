@@ -12,7 +12,7 @@ export function Footer() {
               <span className="text-xl font-bold text-[#f4fbf1]">AgroProductos</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-[#dff7d7]">
-              Soluciones agricolas de calidad para proteger y potenciar sus cultivos.
+              Soluciones agrícolas de calidad para proteger y potenciar sus cultivos.
             </p>
             <Link
               className="group/btn -ml-2 mt-2 inline-flex h-8 items-center justify-center gap-1.5 rounded-md px-3 text-sm font-medium text-[#f4fbf1] transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
@@ -42,7 +42,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-[#f4fbf1]">Siguenos</h3>
+            <h3 className="text-sm font-semibold text-[#f4fbf1]">Síguenos</h3>
             <div className="mt-4 flex gap-4">
               <a
                 href="#"

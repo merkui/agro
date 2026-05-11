@@ -112,7 +112,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           {typedProducto.producto_descripcion && (
             <div className="space-y-2">
-              <h2 className="text-lg font-semibold text-foreground">Descripcion</h2>
+              <h2 className="text-lg font-semibold text-foreground">Descripción</h2>
               <p className="text-pretty leading-relaxed text-muted-foreground">
                 {typedProducto.producto_descripcion}
               </p>
@@ -121,7 +121,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           {typedProducto.producto_formulacion && (
             <div className="space-y-2">
-              <h2 className="text-lg font-semibold text-foreground">Formulacion</h2>
+              <h2 className="text-lg font-semibold text-foreground">Formulación</h2>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Beaker className="size-5 text-primary" />
                 <span>{typedProducto.producto_formulacion}</span>
@@ -149,14 +149,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
           )}
 
           <div className="mt-4 rounded-xl border border-border bg-card p-6">
-            <h3 className="mb-4 font-semibold text-foreground">Informacion adicional</h3>
+            <h3 className="mb-4 font-semibold text-foreground">Información adicional</h3>
             <dl className="grid gap-3 text-sm">
               <div className="flex justify-between">
                 <dt className="text-muted-foreground">ID del producto</dt>
                 <dd className="font-mono text-xs text-foreground">{typedProducto.id}</dd>
               </div>
               <div className="flex justify-between">
-                <dt className="text-muted-foreground">Categoria</dt>
+                <dt className="text-muted-foreground">Categoría</dt>
                 <dd className="capitalize text-foreground">{typedProducto.categoria}</dd>
               </div>
               <div className="flex justify-between">

@@ -54,9 +54,9 @@ export function ProductosContent({ productos, selectedCategoria, selectedEstado 
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            {/* Categorias */}
+            {/* Categorías */}
             <div>
-              <h3 className="mb-3 text-sm font-medium text-foreground">Categoria</h3>
+              <h3 className="mb-3 text-sm font-medium text-foreground">Categoría</h3>
               <div className="space-y-2">
                 {CATEGORIAS.map((categoria) => (
                   <Button
@@ -135,7 +135,7 @@ export function ProductosContent({ productos, selectedCategoria, selectedEstado 
                       </Link>
                     </CardTitle>
                     <CardDescription className="line-clamp-3">
-                      {producto.producto_descripcion || 'Sin descripcion disponible'}
+                      {producto.producto_descripcion || 'Sin descripción disponible'}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex flex-1 flex-col justify-between gap-4 pb-6">
@@ -154,7 +154,7 @@ export function ProductosContent({ productos, selectedCategoria, selectedEstado 
                           <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
                         </Link>
                       </Button>
-                      <AddToBudget producto={producto} />
+                      <AddToBudget producto={producto} buttonClassName="lg:text-[0.775rem]" />
                     </div>
                   </CardContent>
                 </Card>

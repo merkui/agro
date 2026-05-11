@@ -7,27 +7,38 @@ import { Input } from '@/components/ui/input'
 import { ToastAction } from '@/components/ui/toast'
 import { toast } from '@/hooks/use-toast'
 import { useBudget } from '@/components/use-budget'
+import { cn } from '@/lib/utils'
 import type { Producto } from '@/lib/types'
 
 interface AddToBudgetProps {
   producto: Producto
+  buttonClassName?: string
 }
 
-export function AddToBudget({ producto }: AddToBudgetProps) {
-  const [quantity, setQuantity] = useState(1)
+export function AddToBudget({ producto, buttonClassName }: AddToBudgetProps) {
+  const [quantity, setQuantity] = useState('1')
   const { addItem } = useBudget()
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = Number(event.target.value)
-    setQuantity(value >= 1 ? value : 1)
+    const { value } = event.target
+
+    if (value === '') {
+      setQuantity(value)
+      return
+    }
+
+    const numericValue = Number(value)
+    setQuantity(numericValue >= 1 ? value : '1')
   }
 
   const handleAdd = () => {
-    if (quantity < 1) return
-    addItem(producto, quantity)
+    const numericQuantity = Number(quantity)
+
+    if (numericQuantity < 1) return
+    addItem(producto, numericQuantity)
     toast({
       title: 'Producto agregado',
-      description: `${producto.producto_nombre} x ${quantity} añadido al presupuesto.`,
+      description: `${producto.producto_nombre} x ${numericQuantity} añadido al presupuesto.`,
       variant: 'success',
       duration: 2000,
       action: (
@@ -36,7 +47,7 @@ export function AddToBudget({ producto }: AddToBudgetProps) {
         </ToastAction>
       ),
     })
-    setQuantity(1)
+    setQuantity('1')
   }
 
   return (
@@ -49,7 +60,7 @@ export function AddToBudget({ producto }: AddToBudgetProps) {
           onChange={handleChange}
           className="w-24"
         />
-        <Button size="sm" className="cursor-pointer" onClick={handleAdd}>
+        <Button size="sm" className={cn('cursor-pointer', buttonClassName)} onClick={handleAdd}>
           Agregar al Presupuesto
         </Button>
       </div>

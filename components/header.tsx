@@ -85,6 +85,10 @@ export function Header() {
         </div>
       </nav>
 
+      <div className="px-6 pb-4 md:hidden">
+        <ProductSearch productos={productos} />
+      </div>
+
       {mobileMenuOpen && (
         <div className="lg:hidden">
           <div className="space-y-1 border-t border-[#1f4f31] px-6 py-4">

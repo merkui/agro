@@ -126,7 +126,7 @@ export function ProductSearch({ productos, className }: ProductSearchProps) {
         <div
           id="product-search-results"
           role="listbox"
-          aria-label="Resultados de busqueda"
+          aria-label="Resultados de búsqueda"
           className="absolute left-0 right-0 top-full z-[100] mt-2 max-h-72 overflow-y-auto rounded-lg border border-border bg-popover p-1 shadow-lg"
         >
           {results.length > 0 ? (

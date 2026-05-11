@@ -35,7 +35,7 @@ export function ProductCard({ producto }: ProductCardProps) {
       <CardHeader className="pt-6 pb-2">
         <CardTitle className="text-lg">{producto.producto_nombre}</CardTitle>
         <CardDescription className="line-clamp-2">
-          {producto.producto_descripcion || 'Sin descripcion disponible'}
+          {producto.producto_descripcion || 'Sin descripción disponible'}
         </CardDescription>
       </CardHeader>
       <CardContent className="pb-6">

@@ -42,7 +42,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Nuestras Categorias
+              Nuestras Categorías
             </h2>
             <p className="mt-4 text-muted-foreground">
               Encuentra el producto adecuado para cada necesidad
@@ -71,7 +71,7 @@ export default function HomePage() {
                 Productos Destacados
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Los productos mas populares de nuestro catalogo
+                Los productos más populares de nuestro catálogo
               </p>
             </div>
             <Button variant="outline" className="hidden sm:flex" asChild>

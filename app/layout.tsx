@@ -15,8 +15,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'AgroProductos - Catalogo de Productos Agricolas',
-  description: 'Descubre nuestra amplia gama de productos agricolas: insecticidas, herbicidas y fungicidas para proteger tus cultivos.',
+  title: 'AgroProductos - Catálogo de Productos Agrícolas',
+  description: 'Descubre nuestra amplia gama de productos agrícolas: insecticidas, herbicidas y fungicidas para proteger tus cultivos.',
   generator: 'v0.app',
   icons: {
     icon: [
