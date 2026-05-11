@@ -10,7 +10,7 @@ export const PRODUCTOS: Producto[] = [
     estado: 'destacado',
     categoria: 'insecticidas',
     created_at: '2026-04-01T08:30:00.000Z',
-    image_urls: [],
+    image_urls: ['/cropsafe.jpg'],
   },
   {
     id: 'e8d1f0bf-613a-4409-8a9b-12c6cc3f39ee',
@@ -21,7 +21,7 @@ export const PRODUCTOS: Producto[] = [
     estado: 'destacado',
     categoria: 'insecticidas',
     created_at: '2026-04-03T10:15:00.000Z',
-    image_urls: [],
+    image_urls: ['/insecticida.jpg'],
   },
   {
     id: 'a2f4c5e7-1d2a-4a67-801c-4d5a9b7fbc22',
@@ -32,7 +32,7 @@ export const PRODUCTOS: Producto[] = [
     estado: 'nuevo',
     categoria: 'insecticidas',
     created_at: '2026-04-06T14:20:00.000Z',
-    image_urls: [],
+    image_urls: ['/ecostop.jpg'],
   },
   {
     id: '5c2e9a7a-8d3b-4bde-9f6e-3c1d1a2f6c45',
@@ -43,7 +43,7 @@ export const PRODUCTOS: Producto[] = [
     estado: 'oferta',
     categoria: 'insecticidas',
     created_at: '2026-04-10T12:00:00.000Z',
-    image_urls: [],
+    image_urls: ['/fungicida.jpg'],
   },
   {
     id: 'c7f0a8ff-256c-4bb6-a8ad-c76b4d63bffe',
@@ -65,7 +65,7 @@ export const PRODUCTOS: Producto[] = [
     estado: 'destacado',
     categoria: 'herbicidas',
     created_at: '2026-04-05T11:15:00.000Z',
-    image_urls: [],
+    image_urls: ['/herbicida.jpg'],
   },
   {
     id: 'f8b3a1d2-6d6c-4ad9-8cad-8df0f9d6c22f',
@@ -76,7 +76,7 @@ export const PRODUCTOS: Producto[] = [
     estado: 'nuevo',
     categoria: 'herbicidas',
     created_at: '2026-04-07T07:30:00.000Z',
-    image_urls: [],
+    image_urls: ['/cropsafe.jpg'],
   },
   {
     id: '3dab1f4c-2db7-4d3e-aa5b-9c5d8f7b4604',
@@ -87,7 +87,7 @@ export const PRODUCTOS: Producto[] = [
     estado: 'oferta',
     categoria: 'herbicidas',
     created_at: '2026-04-09T13:50:00.000Z',
-    image_urls: [],
+    image_urls: ['/ecostop.jpg'],
   },
   {
     id: '1a8d2f3b-4c9e-4a2f-a8d7-5c1b2a3d4e5f',
@@ -120,7 +120,7 @@ export const PRODUCTOS: Producto[] = [
     estado: 'nuevo',
     categoria: 'fungicidas',
     created_at: '2026-04-08T09:00:00.000Z',
-    image_urls: [],
+    image_urls: ['/fungicida.jpg'],
   },
   {
     id: '9de1c4ab-8b8f-463a-b6d4-6c2d5b3a7f68',
@@ -131,7 +131,7 @@ export const PRODUCTOS: Producto[] = [
     estado: 'destacado',
     categoria: 'fungicidas',
     created_at: '2026-04-02T12:40:00.000Z',
-    image_urls: [],
+    image_urls: ['/insecticida.jpg'],
   },
   {
     id: '5a2f8c7b-3d4e-4b5f-9d6e-1a2b3c4d5e6f',
@@ -142,7 +142,7 @@ export const PRODUCTOS: Producto[] = [
     estado: 'oferta',
     categoria: 'fungicidas',
     created_at: '2026-04-04T11:05:00.000Z',
-    image_urls: [],
+    image_urls: ['/herbicida.jpg'],
   },
   {
     id: '2b7e5c4d-1f3a-4e6f-9c8d-7a5b3c1d2e4f',
