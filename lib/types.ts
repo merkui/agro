@@ -3,6 +3,7 @@ export interface Producto {
   producto_nombre: string
   producto_descripcion: string | null
   producto_formulacion: string | null
+  producto_presentacion: string
   producto_plaga: string | null
   estado: string
   categoria: Categoria

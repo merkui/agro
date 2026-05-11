@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getProductBySlug } from '@/lib/product-data'
+import { getProductBySlug, getProductUrl } from '@/lib/product-data'
 import { ProductGallery } from '@/components/product-gallery'
 import { AddToBudget } from '@/components/add-to-budget'
 import { Button } from '@/components/ui/button'
@@ -77,9 +77,101 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const plagas = typedProducto.producto_plaga
     ? typedProducto.producto_plaga.split(',').map((p) => p.trim())
     : []
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://agroproductos.com').replace(/\/$/, '')
+  const productPath = getProductUrl(typedProducto)
+  const productUrl = `${siteUrl}${productPath}`
+  const productImages = (typedProducto.image_urls || []).map((imageUrl) =>
+    imageUrl.startsWith('http') ? imageUrl : `${siteUrl}${imageUrl}`,
+  )
+  const schemaMarkup = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Product',
+        '@id': `${productUrl}#product`,
+        name: typedProducto.producto_nombre,
+        description: typedProducto.producto_descripcion || undefined,
+        image: productImages.length > 0 ? productImages : undefined,
+        sku: typedProducto.id,
+        category: getCategoryLabel(typedProducto.categoria),
+        url: productUrl,
+        brand: {
+          '@type': 'Brand',
+          name: 'AgroProductos',
+        },
+        additionalProperty: [
+          typedProducto.producto_formulacion
+            ? {
+                '@type': 'PropertyValue',
+                name: 'Formulación',
+                value: typedProducto.producto_formulacion,
+              }
+            : null,
+          typedProducto.producto_presentacion
+            ? {
+                '@type': 'PropertyValue',
+                name: 'Presentación',
+                value: typedProducto.producto_presentacion,
+              }
+            : null,
+          typedProducto.producto_plaga
+            ? {
+                '@type': 'PropertyValue',
+                name: 'Plagas, malezas o enfermedades',
+                value: typedProducto.producto_plaga,
+              }
+            : null,
+        ].filter(Boolean),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            item: {
+              '@id': siteUrl,
+              name: 'Inicio',
+            },
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            item: {
+              '@id': `${siteUrl}/productos`,
+              name: 'Productos',
+            },
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            item: {
+              '@id': `${siteUrl}/productos?categoria=${typedProducto.categoria}`,
+              name: getCategoryLabel(typedProducto.categoria),
+            },
+          },
+          {
+            '@type': 'ListItem',
+            position: 4,
+            item: {
+              '@id': productUrl,
+              name: typedProducto.producto_nombre,
+            },
+          },
+        ],
+      },
+    ],
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemaMarkup).replace(/</g, '\\u003c'),
+        }}
+      />
+
       <Button variant="ghost" size="sm" className="-ml-2 mb-6 text-muted-foreground" asChild>
         <Link href="/productos">
           <ArrowLeft className="size-4" />
@@ -125,6 +217,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Beaker className="size-5 text-primary" />
                 <span>{typedProducto.producto_formulacion}</span>
+              </div>
+            </div>
+          )}
+
+          {typedProducto.producto_presentacion && (
+            <div className="space-y-2">
+              <h2 className="text-lg font-semibold text-foreground">Presentación</h2>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Beaker className="size-5 text-primary" />
+                <span>{typedProducto.producto_presentacion}</span>
               </div>
             </div>
           )}
