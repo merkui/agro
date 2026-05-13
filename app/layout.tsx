@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { BudgetProvider } from '@/components/budget-provider'
@@ -57,6 +58,8 @@ export default function RootLayout({
           </div>
           <Toaster />
           {process.env.NODE_ENV === 'production' && <Analytics />}
+          {process.env.NODE_ENV === 'production' && <SpeedInsights />}
+
         </BudgetProvider>
       </body>
     </html>
