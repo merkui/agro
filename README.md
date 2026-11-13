@@ -15,7 +15,7 @@ TypeScript, Tailwind CSS y componentes basados en Radix UI.
 - Panel admin para ver presupuestos recibidos.
 - Edicion de precio unitario por producto desde el panel admin.
 - Calculo automatico de subtotales y total general.
-- Guardado de presupuestos cotizados en `data/presupuestos.json`.
+- Guardado de presupuestos cotizados en Supabase.
 - Envio de presupuesto cotizado al email del cliente.
 - Imagen institucional en la pagina `Quienes Somos`.
 
@@ -110,14 +110,9 @@ image_urls: ['https://...supabase.co/storage/v1/object/public/.../producto.jpg']
 
 ## Presupuestos guardados
 
-Los presupuestos enviados se guardan localmente en:
-
-```text
-data/presupuestos.json
-```
-
-Ese archivo contiene los datos del cliente, productos solicitados, cantidades y,
-cuando se completa desde admin, los precios unitarios.
+Los presupuestos enviados se guardan en Supabase, en las tablas `customers`,
+`quotes` y `quote_items`. Contienen los datos del cliente, productos
+solicitados, cantidades y, cuando se completa desde admin, los precios unitarios.
 
 ## Imagenes
 
