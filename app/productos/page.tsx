@@ -1,5 +1,5 @@
 import { ProductosContent } from './productos-content'
-import { getAllProducts } from '@/lib/product-data'
+import { getAllProducts } from '@/lib/products'
 
 interface ProductosPageProps {
   searchParams: Promise<{ categoria?: string; estado?: string }>
@@ -7,7 +7,7 @@ interface ProductosPageProps {
 
 export default async function ProductosPage({ searchParams }: ProductosPageProps) {
   const params = await searchParams
-  const productos = getAllProducts({
+  const productos = await getAllProducts({
     categoria: params.categoria,
     estado: params.estado,
   })

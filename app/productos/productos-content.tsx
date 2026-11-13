@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button'
 import { CATEGORIAS, type Producto } from '@/lib/types'
 import { ArrowRight, Beaker, Filter } from 'lucide-react'
-import { getProductUrl } from '@/lib/product-data'
+import { getProductUrl } from '@/lib/product-helpers'
 import { AddToBudget } from '@/components/add-to-budget'
 
 interface ProductosContentProps {
@@ -63,7 +63,7 @@ export function ProductosContent({ productos, selectedCategoria, selectedEstado 
                     key={categoria.value}
                     variant={selectedCategoria === categoria.value ? 'default' : 'ghost'}
                     size="sm"
-                    className="w-full justify-start"
+                    className="w-full justify-start cursor-pointer"
                     onClick={() => updateFilter('categoria', selectedCategoria === categoria.value ? null : categoria.value)}
                   >
                     {categoria.label}
@@ -81,7 +81,7 @@ export function ProductosContent({ productos, selectedCategoria, selectedEstado 
                     key={estado.value}
                     variant={selectedEstado === estado.value ? 'default' : 'ghost'}
                     size="sm"
-                    className="w-full justify-start"
+                    className="w-full justify-start cursor-pointer"
                     onClick={() => updateFilter('estado', selectedEstado === estado.value ? null : estado.value)}
                   >
                     {estado.label}
@@ -141,9 +141,11 @@ export function ProductosContent({ productos, selectedCategoria, selectedEstado 
                   <CardContent className="flex flex-1 flex-col justify-between gap-4 pb-6">
                     <div className="mt-auto space-y-4">
                       <div className="flex flex-wrap gap-2">
-                        <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
-                          {producto.categoria}
-                        </span>
+                        {(producto.categorias.length > 0 ? producto.categorias : [producto.categoria]).filter(Boolean).map((cat) => (
+                          <span key={cat} className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary capitalize">
+                            {cat}
+                          </span>
+                        ))}
                         <span className="inline-flex items-center rounded-full bg-secondary px-2 py-1 text-xs font-medium text-muted-foreground">
                           {producto.estado}
                         </span>

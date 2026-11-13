@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getProductBySlug, getProductUrl } from '@/lib/product-data'
+import { getProductUrl } from '@/lib/product-helpers'
+import { getProductBySlug } from '@/lib/products'
 import { ProductGallery } from '@/components/product-gallery'
 import { AddToBudget } from '@/components/add-to-budget'
 import { Button } from '@/components/ui/button'
@@ -14,7 +15,7 @@ interface ProductPageProps {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { categoria, slug } = await params
-  const producto = getProductBySlug(categoria, slug)
+  const producto = await getProductBySlug(categoria, slug)
 
   if (!producto) {
     notFound()

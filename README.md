@@ -28,6 +28,7 @@ TypeScript, Tailwind CSS y componentes basados en Radix UI.
 - Radix UI
 - Lucide React
 - Nodemailer
+- Supabase
 - pnpm
 
 ## Requisitos
@@ -38,6 +39,8 @@ TypeScript, Tailwind CSS y componentes basados en Radix UI.
 Notas:
 
 - `ADMIN` recibe los presupuestos enviados por los clientes.
+- `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY` conectan la app con Supabase.
+- `SUPABASE_PRODUCTS_TABLE` permite cambiar el origen de productos, por defecto `productos`.
 - `SMTP_*` se usa para enviar emails desde la aplicacion.
 - El archivo `.env.local` esta ignorado por Git y no debe subirse al repositorio.
 
@@ -70,15 +73,15 @@ Desde `/admin/presupuestos` se puede:
 - Guardar el presupuesto cotizado.
 - Enviar el presupuesto al email del cliente.
 
-## Datos de productos
+## Datos de productos en Supabase
 
-Los productos se manejan con datos locales en:
+Los productos se leen desde Supabase usando:
 
 ```text
-lib/product-data.ts
+lib/products.ts
 ```
 
-Cada producto utiliza los siguientes campos:
+La tabla o vista configurada en `SUPABASE_PRODUCTS_TABLE` debe exponer estos campos:
 
 ```ts
 {
@@ -94,11 +97,15 @@ Cada producto utiliza los siguientes campos:
 }
 ```
 
-Las imagenes se guardan en `public/` y se referencian desde los productos con una
-ruta publica, por ejemplo:
+Si tus tablas estan normalizadas con relaciones, se recomienda crear una vista en
+Supabase que exponga esos nombres de columnas para el catalogo. Por defecto la
+app consulta la tabla o vista `productos`.
+
+Las imagenes pueden ser rutas publicas locales o URLs absolutas, por ejemplo:
 
 ```ts
 image_urls: ['/insecticida.jpg']
+image_urls: ['https://...supabase.co/storage/v1/object/public/.../producto.jpg']
 ```
 
 ## Presupuestos guardados

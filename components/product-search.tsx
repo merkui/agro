@@ -8,7 +8,7 @@ import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { CATEGORIAS, type Producto } from '@/lib/types'
 import { cn } from '@/lib/utils'
-import { getProductUrl } from '@/lib/product-data'
+import { getProductUrl } from '@/lib/product-helpers'
 
 interface ProductSearchProps {
   productos: Producto[]

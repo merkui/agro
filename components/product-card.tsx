@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowRight, Beaker } from 'lucide-react'
 import type { Producto } from '@/lib/types'
 import { AddToBudget } from '@/components/add-to-budget'
-import { getProductUrl } from '@/lib/product-data'
+import { getProductUrl } from '@/lib/product-helpers'
 
 interface ProductCardProps {
   producto: Producto

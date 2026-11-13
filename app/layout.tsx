@@ -59,7 +59,6 @@ export default function RootLayout({
           <Toaster />
           {process.env.NODE_ENV === 'production' && <Analytics />}
           {process.env.NODE_ENV === 'production' && <SpeedInsights />}
-
         </BudgetProvider>
       </body>
     </html>

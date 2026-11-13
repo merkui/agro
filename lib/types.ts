@@ -7,11 +7,12 @@ export interface Producto {
   producto_plaga: string | null
   estado: string
   categoria: Categoria
+  categorias: Categoria[]
   created_at: string
   image_urls: string[] | null
 }
 
-export type Categoria = 'insecticidas' | 'herbicidas' | 'fungicidas'
+export type Categoria = string
 
 export const CATEGORIAS: { value: Categoria; label: string; description: string }[] = [
   { 

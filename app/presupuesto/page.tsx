@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
-import { ArrowLeft, Trash2 } from 'lucide-react'
-import { getProductUrl } from '@/lib/product-data'
+import { Trash2 } from 'lucide-react'
+import { getProductUrl } from '@/lib/product-helpers'
 
 export default function PresupuestoPage() {
   const { items, totalItems, updateQuantity, removeItem, clearBudget } = useBudget()

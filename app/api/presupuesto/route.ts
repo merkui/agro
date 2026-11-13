@@ -1,7 +1,6 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
 import nodemailer from 'nodemailer'
 import { NextResponse } from 'next/server'
+import { getSupabaseAdminClient } from '@/lib/supabase'
 
 interface BudgetProduct {
   id: string
@@ -23,39 +22,71 @@ interface PresupuestoRequest {
   items: BudgetItem[]
 }
 
-interface StoredPresupuesto extends PresupuestoRequest {
-  id: string
-  submittedAt: string
-}
-
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL
 const SMTP_HOST = process.env.SMTP_HOST
 const SMTP_PORT = Number(process.env.SMTP_PORT || 587)
 const SMTP_USER = process.env.SMTP_USER
 const SMTP_PASS = process.env.SMTP_PASS
-const PRESUPUESTOS_FILE = path.join(process.cwd(), 'data', 'presupuestos.json')
 
 const isSmtpConfigured = Boolean(ADMIN_EMAIL && SMTP_HOST && SMTP_USER && SMTP_PASS)
 
-async function savePresupuestoToFile(payload: StoredPresupuesto) {
-  await fs.mkdir(path.dirname(PRESUPUESTOS_FILE), { recursive: true })
+async function saveToSupabase(payload: PresupuestoRequest & { submittedAt: string }) {
+  const supabase = getSupabaseAdminClient()
 
-  let existing: StoredPresupuesto[] = []
+  // 1. Upsert customer por email
+  const { data: customer, error: customerError } = await supabase
+    .from('customers')
+    .upsert(
+      {
+        full_name: payload.name,
+        email: payload.email,
+        company: payload.company || null,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: 'email', ignoreDuplicates: false },
+    )
+    .select('id')
+    .single()
 
-  try {
-    const fileContents = await fs.readFile(PRESUPUESTOS_FILE, 'utf8')
-    existing = JSON.parse(fileContents) as StoredPresupuesto[]
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
-      throw error
-    }
+  if (customerError) {
+    throw new Error(`Error al guardar cliente: ${customerError.message}`)
   }
 
-  existing.push(payload)
-  await fs.writeFile(PRESUPUESTOS_FILE, JSON.stringify(existing, null, 2) + '\n', 'utf8')
+  // 2. Insert quote
+  const { data: quote, error: quoteError } = await supabase
+    .from('quotes')
+    .insert({
+      customer_id: customer.id,
+      status: 'pending',
+      customer_notes: payload.observation || null,
+    })
+    .select('id')
+    .single()
+
+  if (quoteError) {
+    throw new Error(`Error al guardar presupuesto: ${quoteError.message}`)
+  }
+
+  // 3. Insert quote_items
+  const quoteItems = payload.items.map((item) => ({
+    quote_id: quote.id,
+    product_id: item.producto.id,
+    quantity: item.quantity,
+    unit_price: 0,
+    subtotal: 0,
+    product_name_snapshot: item.producto.producto_nombre,
+  }))
+
+  const { error: itemsError } = await supabase.from('quote_items').insert(quoteItems)
+
+  if (itemsError) {
+    throw new Error(`Error al guardar items del presupuesto: ${itemsError.message}`)
+  }
+
+  return { customerId: customer.id, quoteId: quote.id }
 }
 
-async function sendPresupuestoEmail(payload: StoredPresupuesto) {
+async function sendPresupuestoEmail(payload: PresupuestoRequest & { submittedAt: string }) {
   if (!isSmtpConfigured) {
     throw new Error('Email server not configured.')
   }
@@ -128,19 +159,17 @@ export async function POST(request: Request) {
       )
     }
 
-    const record: StoredPresupuesto = {
-      ...payload,
-      id: crypto.randomUUID(),
-      submittedAt: new Date().toISOString(),
-    }
+    const record = { ...payload, submittedAt: new Date().toISOString() }
 
-    await savePresupuestoToFile(record)
+    const { quoteId } = await saveToSupabase(record)
 
+    let emailSent = false
     if (isSmtpConfigured) {
       await sendPresupuestoEmail(record)
+      emailSent = true
     }
 
-    return NextResponse.json({ success: true, saved: true, emailSent: isSmtpConfigured })
+    return NextResponse.json({ success: true, quoteId, emailSent })
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Error desconocido' },

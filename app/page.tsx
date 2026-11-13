@@ -2,12 +2,12 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { CategoryCard } from '@/components/category-card'
 import { ProductCard } from '@/components/product-card'
-import { getFeaturedProducts } from '@/lib/product-data'
+import { getFeaturedProducts } from '@/lib/products'
 import { CATEGORIAS } from '@/lib/types'
 import { ArrowRight } from 'lucide-react'
 
-export default function HomePage() {
-  const productos = getFeaturedProducts()
+export default async function HomePage() {
+  const productos = await getFeaturedProducts()
 
   return (
     <div>
