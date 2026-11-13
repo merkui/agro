@@ -19,7 +19,7 @@ export default async function HomePage() {
               Protege tus cultivos con productos de calidad
             </h1>
             <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
-              Descubre nuestra amplia gama de insecticidas, herbicidas y fungicidas. 
+              Descubre nuestra amplia gama de insecticidas, herbicidas, fungicidas, semillas y más.
               Soluciones efectivas para mantener tus cultivos sanos y productivos.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
